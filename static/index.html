@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // get the data from the server
+        fetch('http://localhost:5000/products', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: null
+          // process the data by converting it to JSON
+        }).then(function(response) {
+          console.log(response);
+          return response.json();
+        }).then(function(json) {
+          console.log(json);
+          // display the data in the browser
+          var products = json;
+          var productsHtml = '';
+          // loop round the list of products and create HTML for each one
+          for (var i = 0; i < products.length; i++) {
+            productsHtml += '<div class="product">';
+            productsHtml += '<p class="holdingName">' + products[i][1] + '</p>';
+            productsHtml += '<li class="dateOfPurchase">' + products[i][2] + '</li>';
+            productsHtml += '<li class="priceAtPurchase">' + products[i][3] + '</li>';
+            productsHtml += '<li class="currentPrice">' + products[i][4] + '</li>';
+            productsHtml += '<li class="qty">' + products[i][5] + '</li>';
+            productsHtml += '</div>';
+            productsHtml += '</br>';
+          }
+          //id, holdingName, dateOfPurchase, priceAtPurchase, currentPrice, qty
+          // display the HTML in the browser
+          document.getElementById('products').innerHTML += productsHtml;
+        });
+  
+      </script>
+</head>
+
+<link rel="stylesheet" href="script.js">
+<body>
+     <!-- this div is used to be populated with the data from the server -->
+     <h1>List of Products</h1>
+     <div id="products">
+        
+    </div>
+    
+</body>
+</html>
