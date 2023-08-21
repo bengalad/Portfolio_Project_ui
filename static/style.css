@@ -37,3 +37,9 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 }
+
+#products{
+    overflow: auto;
+    height:220px;
+    border-radius: 2%;
+}

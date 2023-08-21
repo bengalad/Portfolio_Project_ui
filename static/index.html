@@ -5,65 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- To access chart.js -->
+
     <link rel="stylesheet" href="style.css">
-    <script>
-        // get the data from the server
-        fetch('http://localhost:5000/products', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: null
-          // process the data by converting it to JSON
-        }).then(function(response) {
-          console.log(response);
-          return response.json();
-        }).then(function(json) {
-          console.log(json);
-          // display the data in the browser
-          var products = json;
-          var productsHtml = '';
-          // loop round the list of products and create HTML for each one
-          for (var i = 0; i < products.length; i++) {
-            productsHtml += '<div class="product">';
-            productsHtml += '<p class="holdingName">' + products[i][1] + '</p>';
-            productsHtml += '<li class="dateOfPurchase">' + products[i][2] + '</li>';
-            productsHtml += '<li class="priceAtPurchase">' + products[i][3] + '</li>';
-            productsHtml += '<li class="currentPrice">' + products[i][4] + '</li>';
-            productsHtml += '<li class="qty">' + products[i][5] + '</li>';
-            productsHtml += '</div>';
-            productsHtml += '</br>';
-          }
-          //id, holdingName, dateOfPurchase, priceAtPurchase, currentPrice, qty
-          // display the HTML in the browser
-          document.getElementById('products').innerHTML += productsHtml;
-        });
-  
-      </script>
 </head>
 
-<link rel="stylesheet" href="script.js">
 <body>
   <h1>Portfolio Manager</h1>
 
   <div id="format">
-  <div class="box">
-    <h2>Current Value</h2>
-    <p>$2393</p>
+    <div class="box">
+      <h2>Current Value</h2>
+      <p>$2393</p>
+    </div>
+
+    <div class="box">
+      <h2>Table of entries</h2>
+      <div id="products"></div>
+    </div>
+
+    <div class="box">
+      <h2>Stock/bond/cash split pie chart</h2>
+      <canvas 
+            id="myChart" 
+            style="width:100%;max-width:600px">
+      </canvas>
+      
+      <button onclick="loadPie()">Click Me!</button>
+    </div>
+
+    <div class="box">
+      <h2>Value over time graph</h2>
+    </div>
+
   </div>
 
-  <div class="box">
-    <h2>Table of entries</h2>
-  </div>
-
-  <div class="box">
-    <h2>Stock/bond/cash split pie chart</h2>
-  </div>
-
-  <div class="box">
-    <h2>Value over time graph</h2>
-  </div>
-
-  </div>
+  <script src="script.js"></script>  
 </body>
 </html>
