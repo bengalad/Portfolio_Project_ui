@@ -37,23 +37,22 @@ function updateTotalValue(){
                 var value = json;
             });
 
-    let myDiv = document.getElementById("totalValueDiv");
-    myDiv.textContent = "$"+value[1];
+    
     let myDiv2 = document.getElementById("changeInValueText1");
-    myDiv2.textContent = "The initial value of the portfolio was $" + initialValue[1];
+    myDiv2.textContent = "The amount invested is $" + initialValue[1];
     let myDiv3 = document.getElementById("changeInValueText2");
-    myDiv3.textContent = "Change in value: "+100*(value[1]-initialValue[1])/initialValue[1]+"%"
-    if (value[1]>initialValue[1]){
-      myDiv.addEventListener('click', function onClick(event){
-        event.target.style.color = 'green';
-      })
+    myDiv3.textContent = "Change in value: "+(100*(value[1]-initialValue[1])/initialValue[1]).toFixed(2)+"%"
+    const myDiv = document.getElementById("bigValue");
+    myDiv.textContent = "$"+value[1];
+    if(value[1]>initialValue[1]){
+      myDiv.style.color = 'green';
     }
-    else {
-      myDiv.addEventListener('click', function onClick(event){
-        event.target.style.color = 'gredreen';
-      })
+    else{
+      myDiv.style.color = 'red';
     }
   }
+
+
 // get the data from the server
 fetch('http://localhost:5000/products', {
     method: 'GET',

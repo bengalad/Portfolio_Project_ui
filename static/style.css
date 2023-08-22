@@ -13,10 +13,6 @@ li{
     list-style: none;
 }
 
-div {
-    border-bottom:1px solid black;
-}
-
 .box{
 height: 300px;
 background-color: rgb(148, 161, 206);
