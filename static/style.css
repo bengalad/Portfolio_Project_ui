@@ -85,3 +85,8 @@ flex-wrap: wrap;
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+#products{
+    overflow: auto;
+    height:220px;
+    border-radius: 2%;
+}
