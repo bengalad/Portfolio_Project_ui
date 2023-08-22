@@ -37,3 +37,51 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 }
+
+.button1{
+    background-color: white; /* Green */
+    color: black;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.button1div{
+    position: relative;
+    bottom: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#changeInValueDiv{
+    width:300px;
+    height: 20%;
+    text-align: center;
+}
+
+#totalValueDiv{
+    text-align: center;
+    margin: auto;
+    width: 300px;
+    height: 20%;
+    font-family: Arial;
+    font-size: 60px;
+    animation: fadeIn 8s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
