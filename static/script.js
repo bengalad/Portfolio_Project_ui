@@ -1,5 +1,4 @@
-function updateTotalValue(){
-    fetch('http://localhost:5000/refresh', {
+fetch('http://localhost:5000/refresh/stocks', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -7,7 +6,31 @@ function updateTotalValue(){
           body: null
           // log that the data has been refreshed from yahoo
         }).then(function(response) {
-          console.log("up to date data retrieved");})
+          console.log("up to date stocks data retrieved");})
+
+    fetch('http://localhost:5000/refresh/cash', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: null
+            // log that the data has been refreshed from yahoo
+          }).then(function(response) {
+            console.log("up to date cash data retrieved");})
+
+    fetch('http://localhost:5000/refresh/bonds', {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: null
+              // log that the data has been refreshed from yahoo
+            }).then(function(response) {
+              console.log("up to date bond data retrieved");})
+              
+function updateTotalValue(){
+  let value = "";
+  let initialValue = "";
 
     fetch('http://localhost:5000/products/initialvalue', {
       method: 'GET',
@@ -18,7 +41,8 @@ function updateTotalValue(){
         .then(function(json) {
             console.log(json);
             // do something with the json response?
-            var initialValue = json;
+            initialValue += json[0][0];
+            console.log("initial value variable is: "+initialValue)
         });
 
     fetch('http://localhost:5000/products/totalvalue', {
@@ -34,22 +58,25 @@ function updateTotalValue(){
             .then(function(json) {
                 console.log(json);
                 // do something with the json response?
-                var value = json;
-            });
+                value += json[0][0];
+                console.log("total value variable is: "+value);
 
-    
     let myDiv2 = document.getElementById("changeInValueText1");
-    myDiv2.textContent = "The amount invested is $" + initialValue[1];
+    myDiv2.textContent = "The amount invested is $" + parseFloat(initialValue).toFixed(2);
     let myDiv3 = document.getElementById("changeInValueText2");
-    myDiv3.textContent = "Change in value: "+(100*(value[1]-initialValue[1])/initialValue[1]).toFixed(2)+"%"
+    myDiv3.textContent = "Change in value: "+(100*(value-initialValue)/initialValue).toFixed(2)+"%"
     const myDiv = document.getElementById("bigValue");
-    myDiv.textContent = "$"+value[1];
-    if(value[1]>initialValue[1]){
+    myDiv.textContent = "$"+parseFloat(value).toFixed(2);
+    if(value>initialValue){
       myDiv.style.color = 'green';
     }
     else{
       myDiv.style.color = 'red';
     }
+
+            });
+
+
   }
 
 
