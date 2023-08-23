@@ -26,7 +26,7 @@
       <p id="changeInValueText2">Change in value: 0%</p>
     </div>
     <div class="button1div">
-    <button onclick="updateTotalValue()" class="button1">Update values</button>
+    <button onclick="refreshData(); updateTotalValue();" class="button1">Update values</button>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
             style="width:100%;max-width:600px">
       </canvas>
       
-      <button onclick="loadPie()">Click Me!</button>
+      <button onclick="refreshData(); loadPie()">Click Me!</button>
     </div>
 
     <div class="box">
