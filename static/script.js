@@ -1,3 +1,4 @@
+function refreshData(){
 fetch('http://localhost:5000/refresh/stocks', {
           method: 'GET',
           headers: {
@@ -27,6 +28,7 @@ fetch('http://localhost:5000/refresh/stocks', {
               // log that the data has been refreshed from yahoo
             }).then(function(response) {
               console.log("up to date bond data retrieved");})
+  }
               
 function updateTotalValue(){
   let value = "";
