@@ -112,31 +112,47 @@ fetch('http://localhost:5000/products', {
     document.getElementById('products').innerHTML += productsHtml;
   });
 
-  function loadPie(){
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = [
-    "#b91d47",
-    "#00aba9",
-    "#2b5797",
-    "#e8c3b9",
-    "#1e7145"
-    ];
-    
-    new Chart("myChart", {
-    type: "doughnut",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        title: {
-        display: true,
-        text: "World Wide Wine Production 2018"
+  async function loadPie(){
+
+    //using promises
+    let request1 = await fetch('http://localhost:5000/products/totalstocks').then(response => response.json());
+    let request2 = await fetch('http://localhost:5000/products/totalbonds').then(response => response.json());
+    let request3 = await fetch('http://localhost:5000/products/totalcash').then(response => response.json());
+
+    Promise.all([request1, request2, request3])
+      .then(([data1, data2, data3]) => {
+        console.log(data1, data2, data3);
+        
+        let xValues = ["Stocks", "Bonds","Cash"];
+        let yValues = [data1[0], data2[0], data3[0]];
+        // let yValues = [55, 49, 44];
+        let barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145"
+        ];
+        
+        new Chart("myChart", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Portfolio Breakdown"
+            }
         }
-    }
-    });
+        });
+
+      })
+      .catch(error => {
+        console.error(error);
+      });
 };
