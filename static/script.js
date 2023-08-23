@@ -1,3 +1,85 @@
+fetch('http://localhost:5000/refresh/stocks', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: null
+          // log that the data has been refreshed from yahoo
+        }).then(function(response) {
+          console.log("up to date stocks data retrieved");})
+
+    fetch('http://localhost:5000/refresh/cash', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: null
+            // log that the data has been refreshed from yahoo
+          }).then(function(response) {
+            console.log("up to date cash data retrieved");})
+
+    fetch('http://localhost:5000/refresh/bonds', {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: null
+              // log that the data has been refreshed from yahoo
+            }).then(function(response) {
+              console.log("up to date bond data retrieved");})
+              
+function updateTotalValue(){
+  let value = "";
+  let initialValue = "";
+
+    fetch('http://localhost:5000/products/initialvalue', {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+      body: null}).then(function(response){
+        console.log(response);
+        return response.json();})
+        .then(function(json) {
+            console.log(json);
+            // do something with the json response?
+            initialValue += json[0][0];
+            console.log("initial value variable is: "+initialValue)
+        });
+
+    fetch('http://localhost:5000/products/totalvalue', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: null
+            // process the new total portfolio value by converting it to JSON
+          }).then(function(response) {
+            console.log(response);
+            return response.json();})
+            .then(function(json) {
+                console.log(json);
+                // do something with the json response?
+                value += json[0][0];
+                console.log("total value variable is: "+value);
+
+    let myDiv2 = document.getElementById("changeInValueText1");
+    myDiv2.textContent = "The amount invested is $" + parseFloat(initialValue).toFixed(2);
+    let myDiv3 = document.getElementById("changeInValueText2");
+    myDiv3.textContent = "Change in value: "+(100*(value-initialValue)/initialValue).toFixed(2)+"%"
+    const myDiv = document.getElementById("bigValue");
+    myDiv.textContent = "$"+parseFloat(value).toFixed(2);
+    if(value>initialValue){
+      myDiv.style.color = 'green';
+    }
+    else{
+      myDiv.style.color = 'red';
+    }
+
+            });
+
+
+  }
+
+
 // get the data from the server
 fetch('http://localhost:5000/products', {
     method: 'GET',

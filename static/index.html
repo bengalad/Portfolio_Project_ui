@@ -16,10 +16,19 @@
   <h1>Portfolio Manager</h1>
 
   <div id="format">
-    <div class="box">
-      <h2>Current Value</h2>
-      <p>$2393</p>
+  <div class="box">
+    <h2>Current Portfolio Value</h2>
+    <div id="totalValueDiv">
+    <p id="bigValue">$0</p> 
     </div>
+    <div id="changeInValueDiv">
+      <p id="changeInValueText1">The amount invested is $0</p>
+      <p id="changeInValueText2">Change in value: 0%</p>
+    </div>
+    <div class="button1div">
+    <button onclick="updateTotalValue()" class="button1">Update values</button>
+    </div>
+  </div>
 
     <div class="box">
       <h2>Table of entries</h2>
