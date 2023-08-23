@@ -7,3 +7,6 @@ Successfully loads data onto page
 
 update on page:
 ![image](https://github.com/bengalad/Portfolio_Project_ui/assets/63682462/8dd4a154-7b45-4a3e-9413-0b1779c0c5bf)
+
+update 23/08/2023:
+![image](https://github.com/bengalad/Portfolio_Project_ui/assets/63682462/68764a67-ef78-4bf8-943e-f99b916cc122)
