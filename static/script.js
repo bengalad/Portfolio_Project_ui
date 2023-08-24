@@ -369,3 +369,32 @@ function sendBonds() {
   return false;
 }
 
+function popUpCash() {
+  let text = "Are you sure you want to add this cash? \n ";
+  if (confirm(text) == true) {
+    text = "Cash added!";
+  } else {
+    text = "Addition cancelled!";
+  }
+  document.getElementById("confirmationTextCash").innerHTML = text;
+}
+
+function popUpStock() {
+  let text = "Are you sure you want to add this stock? \n ";
+  if (confirm(text) == true) {
+    text = "Stock added!";
+  } else {
+    text = "Addition cancelled!";
+  }
+  document.getElementById("confirmationTextStock").innerHTML = text;
+}
+
+function popUpBond() {
+  let text = "Are you sure you want to add this bond? \n ";
+  if (confirm(text) == true) {
+    text = "Bond added!";
+  } else {
+    text = "Addition cancelled!";
+  }
+  document.getElementById("confirmationTextBond").innerHTML = text;
+}
