@@ -176,13 +176,19 @@ fetch('http://localhost:5000/products', {
 
 function deleteRow(r) {
   console.log("button clicked!");
-
   let i = r.parentNode.parentNode.rowIndex;
   console.log(i);
-  document.getElementById("table").deleteRow(i);
+  
+  // print the text in the Holding Name table column to the console
+  let table = document.getElementById("table");
+  let holdingName = table.rows[i].cells[0].innerHTML;
+  console.log(holdingName);
 
+  // delete the row from the table
+  table.deleteRow(i);
+  
   // deleting from database
-    fetch('http://localhost:5000/products/stocks/5', {method: 'DELETE'})
+    fetch('http://localhost:5000/products/stocks/'+holdingName, {method: 'DELETE'})
     .then(function(response) {
       console.log(response);
       return response.json();
@@ -190,7 +196,7 @@ function deleteRow(r) {
       console.log(json);
     });
 
-    fetch('http://localhost:5000/products/cash/5', {method: 'DELETE'})
+    fetch('http://localhost:5000/products/cash/'+holdingName, {method: 'DELETE'})
     .then(function(response) {
       console.log(response);
       return response.json();
@@ -199,7 +205,7 @@ function deleteRow(r) {
     });
 
 
-    fetch('http://localhost:5000/products/bonds/5', {method: 'DELETE'})
+    fetch('http://localhost:5000/products/bonds/'+holdingName, {method: 'DELETE'})
     .then(function(response) {
       console.log(response);
       return response.json();
