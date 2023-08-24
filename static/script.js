@@ -97,24 +97,25 @@ fetch('http://localhost:5000/products', {
     console.log(json);
     // display the data in the browser
     var products = json;
-    var productsHtml = '';
+    var productsHtml = `<table class="table">
+                            <tr class="tableTitles">
+                              <th>Holding Name</th>
+                              <th>Date of Purchase</th>
+                              <th>Price at Purchase</th>
+                              <th>Current Price</th>
+                              <th>Quantity</th>
+                              </tr>`;
     // loop round the list of products and create HTML for each one
     for (var i = 0; i < products.length; i++) {
-      productsHtml += '<div class="product">';
-      productsHtml += '<p class="holdingName">' + products[i][1] + '</p>';
-      productsHtml += '<li class="dateOfPurchase">' + products[i][2] + '</li>';
-      productsHtml += '<li class="priceAtPurchase">' + products[i][3] + '</li>';
-      productsHtml += '<li class="currentPrice">' + products[i][4] + '</li>';
-      productsHtml += '<li class="qty">' + products[i][5] + '</li>';
-      productsHtml += '</div>';
-      productsHtml += `<button class="deleteButton">
-                        <span onclick="deleteHolding();" >CONFIRM DELETE</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                      </button>`;
-      productsHtml += '</br>';
+      productsHtml += '<tr class="tableRow">';
+      productsHtml += '<td>' + products[i][1] + '</td>';
+      productsHtml += '<td>' + products[i][2] + '</td>';
+      productsHtml += '<td>' + products[i][3] + '</td>';
+      productsHtml += '<td>' + products[i][4] + '</td>';
+      productsHtml += '<td>' + products[i][5] + '</td>';
+      productsHtml += '</tr>';
     }
+    productsHtml += '</table>'
     //id, holdingName, dateOfPurchase, priceAtPurchase, currentPrice, qty
     // display the HTML in the browser
     document.getElementById('products').innerHTML += productsHtml;
