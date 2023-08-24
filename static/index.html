@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h1>Portfolio Manager</h1>
+  <h1 style="margin: 10px;">Portfolio Manager</h1>
 
   <div id="format">
   <div class="box">
@@ -30,10 +30,7 @@
     </div>
   </div>
 
-    <div class="box">
-      <h2>Table of entries</h2>
-      <div id="products"></div>
-    </div>
+    
 
     <div class="box">
       <h2>Stock/bond/cash split pie chart</h2>
@@ -45,8 +42,10 @@
       <button onclick="refreshData(); loadPie()">Click Me!</button>
     </div>
 
-    <div class="box">
-      <h2>Value over time graph</h2>
+    <div class="box", id="tableBox">
+      <h2>Table of entries</h2>
+      <div id="products">
+      </div>
     </div>
 
   </div>

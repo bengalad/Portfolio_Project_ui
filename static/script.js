@@ -97,18 +97,25 @@ fetch('http://localhost:5000/products', {
     console.log(json);
     // display the data in the browser
     var products = json;
-    var productsHtml = '';
+    var productsHtml = `<table class="table">
+                            <tr class="tableTitles">
+                              <th>Holding Name</th>
+                              <th>Date of Purchase</th>
+                              <th>Price at Purchase</th>
+                              <th>Current Price</th>
+                              <th>Quantity</th>
+                              </tr>`;
     // loop round the list of products and create HTML for each one
     for (var i = 0; i < products.length; i++) {
-      productsHtml += '<div class="product">';
-      productsHtml += '<p class="holdingName">' + products[i][1] + '</p>';
-      productsHtml += '<li class="dateOfPurchase">' + products[i][2] + '</li>';
-      productsHtml += '<li class="priceAtPurchase">' + products[i][3] + '</li>';
-      productsHtml += '<li class="currentPrice">' + products[i][4] + '</li>';
-      productsHtml += '<li class="qty">' + products[i][5] + '</li>';
-      productsHtml += '</div>';
-      productsHtml += '</br>';
+      productsHtml += '<tr class="tableRow">';
+      productsHtml += '<td>' + products[i][1] + '</td>';
+      productsHtml += '<td>' + products[i][2] + '</td>';
+      productsHtml += '<td>' + products[i][3] + '</td>';
+      productsHtml += '<td>' + products[i][4] + '</td>';
+      productsHtml += '<td>' + products[i][5] + '</td>';
+      productsHtml += '</tr>';
     }
+    productsHtml += '</table>'
     //id, holdingName, dateOfPurchase, priceAtPurchase, currentPrice, qty
     // display the HTML in the browser
     document.getElementById('products').innerHTML += productsHtml;
