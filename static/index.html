@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h1 style="margin: 10px;">Portfolio Manager</h1>
+  <h1>Portfolio Manager</h1>
 
   <div id="format">
   <div class="box">
@@ -26,12 +26,11 @@
       <p id="changeInValueText2">Change in value: 0%</p>
     </div>
     <div class="button1div">
-    <button onclick="updateTotalValue();" class="button1">Update values</button>
+    <button onclick="refreshData(); updateTotalValue();" class="button1">Update values</button>
     </div>
   </div>
 
     
-
     <div class="box">
       <h2>Stock/bond/cash split pie chart</h2>
       <canvas 
@@ -39,7 +38,7 @@
             style="width:100%;max-width:600px">
       </canvas>
       
-      <button onclick="loadPie()">Click Me!</button>
+      <button onclick="refreshData(); loadPie()">Click Me!</button>
     </div>
 
     <div class="box", id="tableBox">
@@ -115,7 +114,6 @@
       />
   </form>
     </div>
-
     <div class="box">
       <h2>Add bonds</h2>
       <form onSubmit="return sendBonds()" id="bondForm">
@@ -167,7 +165,6 @@
       />
   </form>
     </div>
-
   </div>
 
   <script src="script.js"></script>  
