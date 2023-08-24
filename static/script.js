@@ -208,33 +208,6 @@ function deleteRow(r) {
     });
 }
 
-// get elements by holding name then delete the whole div it is in
-function deleteHolding(){
-  document.getElementById("tableRow").addEventListener("click", function(e) {
-  if (e.target && e.target.matches("span")) {
-
-    //e.target is span -> e.target.parentNode is button -> e.target.parentNode.parentNode is tr
-    console.log("button clicked!");
-    // console.log(e.target.parentNode.parentNode.children[0].textContent);
-
-    //deleteing delete button
-    e.target.parentNode.remove();
-
-    // delete div in class product from screen
-    let list = document.getElementById("table");
-    list.removeChild(list.children[0]);
-
-    r = e.target.parentNode.parentNode.rowIndex;
-    document.getElementById("myTable").deleteRow(r)
-
-    
-
-
-  }
-});
-};
-
-
 function sendCash() {
   // set up some variables containing the values of the inputs in the form
   let holdingName = document.getElementById("holdingName").value;
