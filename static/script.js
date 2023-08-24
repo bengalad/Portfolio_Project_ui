@@ -185,6 +185,7 @@ function sendCash() {
   // convert the JavaScript object into a JSON string
   let cashJson = JSON.stringify(cash);
   console.log(cashJson);
+  document.getElementById("cashForm").reset();
   // send the JSON string to the server
   fetch('http://localhost:5000/cash', {
       method: 'POST',
@@ -233,6 +234,7 @@ function sendStocks() {
   // convert the JavaScript object into a JSON string
   let stockJson = JSON.stringify(stock);
   console.log(stockJson);
+  document.getElementById("stockForm").reset();
   // send the JSON string to the server
   fetch('http://localhost:5000/stocks', {
       method: 'POST',
@@ -288,6 +290,7 @@ function sendBonds() {
   // convert the JavaScript object into a JSON string
   let bondJson = JSON.stringify(bond);
   console.log(bondJson);
+  document.getElementById("bondForm").reset();
   // send the JSON string to the server
   fetch('http://localhost:5000/bonds', {
       method: 'POST',
