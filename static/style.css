@@ -13,7 +13,7 @@
     width: fit-content;
 }
 
-.table{
+#table{
     border-collapse: separate;
     border-spacing: 10px 15px;
 }
