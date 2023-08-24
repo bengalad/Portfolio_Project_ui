@@ -96,3 +96,61 @@ font:100;
     height:220px;
     border-radius: 2%;
 }
+
+/* delete button styling */
+
+.deleteButton{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    border: 2px solid rgb(231, 50, 50);
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.deleteButton:hover {
+    background-color: rgb(245, 207, 207);
+    transform: scale(1.2);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+
+svg {
+    color: rgb(231, 50, 50);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+
+.deleteButton:focus svg {
+    opacity: 0;
+    transition: .3s;
+}
+
+span {
+    width: 120px;
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    color: rgb(231, 50, 50);
+    font-weight: 600;
+    transition: .3s;
+}
+
+
+.deleteButton:focus {
+    width: 140px;
+    height: 20px;
+    transition: .3s;
+}
+
+.deleteButton:focus span {
+    opacity: 1;
+    transition: .3s;
+}
