@@ -26,7 +26,7 @@
       <p id="changeInValueText2">Change in value: 0%</p>
     </div>
     <div class="button1div">
-    <button onclick="refreshData(); updateTotalValue();" class="button1">Update values</button>
+    <button onclick="updateTotalValue();" class="button1">Update values</button>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
             style="width:100%;max-width:600px">
       </canvas>
       
-      <button onclick="refreshData(); loadPie()">Click Me!</button>
+      <button onclick="loadPie()">Click Me!</button>
     </div>
 
     <div class="box">
@@ -51,7 +51,7 @@
 
     <div class="box">
       <h2>Add cash</h2>
-      <form onSubmit="return sendCash()" >
+      <form onSubmit="return sendCash()" id="cashForm">
         <label for="holdingName">Name: </label>
         <input
           id="holdingName"
@@ -85,7 +85,7 @@
 
     <div class="box">
       <h2>Add stocks</h2>
-      <form onSubmit="return sendStocks()" >
+      <form onSubmit="return sendStocks()" id="stockForm" >
         <label for="holdingName2">Name: </label>
         <input
           id="holdingName2"
@@ -119,7 +119,7 @@
 
     <div class="box">
       <h2>Add bonds</h2>
-      <form onSubmit="return sendBonds()" >
+      <form onSubmit="return sendBonds()" id="bondForm">
         <label for="holdingName3">Name: </label>
         <input
           id="holdingName3"
