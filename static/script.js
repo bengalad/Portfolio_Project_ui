@@ -165,6 +165,7 @@ fetch('http://localhost:5000/products', {
       });
 };
 
+
 // get elements by holding name then delete the whole div it is in
 function deleteHolding(){
   document.getElementById("products").addEventListener("click", function(e) {
@@ -211,3 +212,160 @@ function deleteHolding(){
   }
 });
 };
+
+
+function sendCash() {
+  // set up some variables containing the values of the inputs in the form
+  let holdingName = document.getElementById("holdingName").value;
+  let ticker = document.getElementById("ticker").value;
+  let qty = document.getElementById("qty").value;
+  qty = parseFloat(qty);
+  let dateOfPurchase = new Date();
+  dateOfPurchase = dateOfPurchase.toISOString().split('T')[0];
+  let exchAtPurchase = document.getElementById("exchAtPurchase").value;
+  exchAtPurchase = parseFloat(exchAtPurchase);
+  let exchCurrent = exchAtPurchase;
+  let currentValue = qty*exchCurrent;
+
+  // put all the variables into a JavaScript object
+  let cash = {
+      "holdingName": holdingName,
+      "dateOfPurchase": dateOfPurchase,
+      "exchAtPurchase": exchAtPurchase,
+      "exchCurrent": exchCurrent,
+      "qty": qty,
+      "currentValue": currentValue,
+      "ticker": ticker
+  };
+  // convert the JavaScript object into a JSON string
+  let cashJson = JSON.stringify(cash);
+  console.log(cashJson);
+  document.getElementById("cashForm").reset();
+  // send the JSON string to the server
+  fetch('http://localhost:5000/cash', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: cashJson
+  }).then(function(response) {
+      console.log(response);
+      return response.json();
+  })
+  .catch(function(error) {
+      console.log(error);
+  })
+  .then(function(json) {
+      console.log(json);
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
+  return false;
+}
+
+function sendStocks() {
+  // set up some variables containing the values of the inputs in the form
+  let holdingName = document.getElementById("holdingName2").value;
+  let ticker = document.getElementById("ticker2").value;
+  console.log(ticker);
+  let qty = document.getElementById("qty2").value;
+  qty = parseFloat(qty);
+  console.log(qty);
+  let dateOfPurchase = new Date();
+  dateOfPurchase = dateOfPurchase.toISOString().split('T')[0];
+  let currentPrice = document.getElementById("currentPrice2").value;
+  currentPrice = parseFloat(currentPrice);
+  let priceAtPurchase = currentPrice;
+
+  let stock = {
+      "holdingName": holdingName,
+      "dateOfPurchase": dateOfPurchase,
+      "priceAtPurchase": priceAtPurchase,
+      "qty": qty,
+      "currentPrice": currentPrice,
+      "ticker": ticker
+  };
+  // convert the JavaScript object into a JSON string
+  let stockJson = JSON.stringify(stock);
+  console.log(stockJson);
+  document.getElementById("stockForm").reset();
+  // send the JSON string to the server
+  fetch('http://localhost:5000/stocks', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: stockJson
+  }).then(function(response) {
+      console.log(response);
+      return response.json();
+  })
+  .catch(function(error) {
+      console.log(error);
+  })
+  .then(function(json) {
+      console.log(json);
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
+  return false;
+}
+
+function sendBonds() {
+  // set up some variables containing the values of the inputs in the form
+  let holdingName = document.getElementById("holdingName3").value;
+  let priceAtPurchase = document.getElementById("priceAtPurchase3").value;
+  priceAtPurchase = parseFloat(priceAtPurchase);
+  let qty = document.getElementById("qty3").value;
+  qty = parseFloat(qty);
+  let dateOfPurchase = new Date();
+  dateOfPurchase = dateOfPurchase.toISOString().split('T')[0];
+  let currentPrice = priceAtPurchase;
+  let parValue = document.getElementById("parValue").value;
+  parValue = parseFloat(parValue);
+  let maturityDate = document.getElementById("maturityDate").value;
+  let coupon = document.getElementById("coupon").value;
+  coupon = parseFloat(coupon);
+  let discountRate= document.getElementById("discountRate");
+  discountRate = parseFloat(discountRate);
+
+  let bond = {
+      "holdingName": holdingName,
+      "dateOfPurchase": dateOfPurchase,
+      "priceAtPurchase": priceAtPurchase,
+      "qty": qty,
+      "currentPrice": currentPrice,
+      "parValue": parValue,
+      "maturityDate": maturityDate,
+      "coupon": coupon,
+      "discountRate": discountRate
+  };
+  // convert the JavaScript object into a JSON string
+  let bondJson = JSON.stringify(bond);
+  console.log(bondJson);
+  document.getElementById("bondForm").reset();
+  // send the JSON string to the server
+  fetch('http://localhost:5000/bonds', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: bondJson
+  }).then(function(response) {
+      console.log(response);
+      return response.json();
+  })
+  .catch(function(error) {
+      console.log(error);
+  })
+  .then(function(json) {
+      console.log(json);
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
+  return false;
+}
+
