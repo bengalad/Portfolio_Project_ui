@@ -49,6 +49,126 @@
       <h2>Value over time graph</h2>
     </div>
 
+    <div class="box">
+      <h2>Add cash</h2>
+      <form onSubmit="return sendCash()" >
+        <label for="holdingName">Name: </label>
+        <input
+          id="holdingName"
+          type="text"
+        />
+        <br/>
+        <label for="ticker">Ticker: </label>
+        <input
+          id="ticker"
+          type="text"
+        />
+        <br/>
+        <label for="qty">Quantity: </label>
+        <input
+          id="qty"
+          type="decimal"
+        />
+        <br/>
+        <label for="exchAtPurchase">Exchange rate (to USD): </label>
+        <input
+          id="exchAtPurchase"
+          type="decimal"
+        />
+        <br/>
+      <input
+        type="submit"
+        value="Add cash"
+      />
+  </form>
+    </div>
+
+    <div class="box">
+      <h2>Add stocks</h2>
+      <form onSubmit="return sendStocks()" >
+        <label for="holdingName2">Name: </label>
+        <input
+          id="holdingName2"
+          type="text"
+        />
+        <br/>
+        <label for="ticker2">Ticker: </label>
+        <input
+          id="ticker2"
+          type="text"
+        />
+        <br/>
+        <label for="qty2">Quantity: </label>
+        <input
+          id="qty2"
+          type="decimal"
+        />
+        <br/>
+        <label for="currentPrice2">Current stock price: </label>
+        <input
+          id="currentPrice2"
+          type="decimal"
+        />
+        <br/>
+      <input
+        type="submit"
+        value="Add stocks"
+      />
+  </form>
+    </div>
+
+    <div class="box">
+      <h2>Add bonds</h2>
+      <form onSubmit="return sendBonds()" >
+        <label for="holdingName3">Name: </label>
+        <input
+          id="holdingName3"
+          type="text"
+        />
+        <br/>
+        <label for="priceAtPurchase3">Price: </label>
+        <input
+          id="priceAtPurchase3"
+          type="decimal"
+        />
+        <br/>
+        <label for="qty3">Quantity: </label>
+        <input
+          id="qty3"
+          type="decimal"
+        />
+        <br/>
+        <label for="parValue">Par Value: </label>
+        <input
+          id="parValue"
+          type="decimal"
+        />
+        <br/>
+        <label for="maturityDate">Maturity date (yyyy-mm-dd): </label>
+        <input
+          id="maturityDate"
+          type="text"
+        />
+        <br/>
+        <label for="coupon">Coupon: </label>
+        <input
+          id="coupon"
+          type="decimal"
+        />
+        <br/>
+        <label for="discountRate">Discount Rate: </label>
+        <input
+          id="discountRate"
+          type="decimal"
+        />
+        <br/>
+      <input
+        type="submit"
+        value="Add bond"
+      />
+  </form>
+    </div>
+
   </div>
 
   <script src="script.js"></script>  
