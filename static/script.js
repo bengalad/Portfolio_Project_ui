@@ -103,12 +103,12 @@ fetch('http://localhost:5000/products', {
                               <th>Date of Purchase</th>
                               <th>Price at Purchase</th>
                               <th>Current Price</th>
-                              <th>Profit</>
+                              <th>Profit</th>
                               <th>Quantity</th>
                               </tr>`;
     // loop round the list of products and create HTML for each one
     for (var i = 0; i < products.length; i++) {
-      let profit = products[i][4] - products[i][3]
+      let profit = (products[i][4] - products[i][3]).toFixed(2);
       productsHtml += '<tr class="tableRow">';
       productsHtml += '<td>' + products[i][1] + '</td>';
       productsHtml += '<td>' + products[i][2].replace("00:00:00 GMT","") + '</td>';
